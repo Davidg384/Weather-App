@@ -13,10 +13,9 @@ function getLocation(){
     navigator.geolocation.getCurrentPosition(position => {
       long = position.coords.longitude;
       lat = position.coords.latitude;
+      console.log(lat, long);
       const proxy = 'https://cors-anywhere.herokuapp.com/'
-      const weatherAPI = `${proxy}https://api.darksky.net/forecast/08c69a8d8e6d9bde6b86fdebf6ceb709/${lat},${long}
-      `;
-
+      const weatherAPI = `${proxy}https://api.darksky.net/forecast/08c69a8d8e6d9bde6b86fdebf6ceb709/${lat},${long}`;
       fetch(weatherAPI)
         .then(response => {
           return response.json();
