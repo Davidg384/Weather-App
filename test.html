@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var lat, long;
+    const key = "LTHoJOW7t93siAAPoTK0cgvvWkUzdQto";
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        lat = position.coords.latitude;
+        long = position.coords.longitude;
+        console.log(lat, long);
+        fetch("http://www.mapquestapi.com/geocoding/v1/reverse?key=LTHoJOW7t93siAAPoTK0cgvvWkUzdQto&location=33.694401,-86.6375973&includeRoadMetadata=true&includeNearestIntersection=true").then(response => {
+        return response.json();
+        }).then(myData => {
+          let res = JSON.stringify(myData);
+          console.log(res);
+        })
+      })
+    } else {
+      alert('Geolocation is not supported');
+    }
+
+    
+  </script>
+</body>
+</html>
